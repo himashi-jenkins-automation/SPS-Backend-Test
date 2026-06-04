@@ -7,16 +7,15 @@ pipeline {
                 checkout scm 
             } 
         } 
-        stage('Build') { 
+        stage('Install') { 
             steps { 
-                echo "Building backend..." 
+                echo "Installing backend dependencies..." 
                 bat 'npm install' 
-                bat 'npm run build' 
             } 
         } 
     } 
     post { 
-        success { echo "Build successful!" } 
-        failure { echo "Build failed!" } 
+        success { echo "Backend dependencies installed successfully!" } 
+        failure { echo "Backend installation failed!" } 
     } 
 } 
